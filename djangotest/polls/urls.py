@@ -4,5 +4,5 @@ from django.contrib.auth import views
 urlpatterns = patterns(
                        'polls.views',
                        url(r'^logout/$', views.logout, {'next_page':'/polls/'},name='logout'),
-                       url(r'^$', 'login_index', {'template_name':'signin.html'}, name='polls_index'),
+                       url(r'^$', 'polls_index', {'template_name':'signin.html'}, name='polls_index'),
 )

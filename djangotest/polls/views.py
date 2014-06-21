@@ -20,5 +20,8 @@ from django.template import RequestContext, loader
 
 
 # Create your views here.
-def login_index(request, template_name='signin.html'): #login default page. username/password box or create new user
+def login_index(request, template_name='base.html'): #login default page. username/password box or create new user
+        return render_to_response(template_name, {},context_instance=RequestContext(request))
+
+def polls_index(request, template_name='signin.html'): #login default page. username/password box or create new user
         return render_to_response(template_name, {},context_instance=RequestContext(request))
