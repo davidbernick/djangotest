@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load url from future %}
 
-{% block content %}
+{% block login %}class="active"{% endblock %}
+
+
+{% block bootstrap3_content %}
 {% if user.is_authenticated %}
     <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
 {% else %}
