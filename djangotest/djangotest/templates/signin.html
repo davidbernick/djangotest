@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+<a href="{% url 'socialauth_begin' 'google-oauth2' %}">Enter using Google OAuth2</a> <BR> 
+<a href="{% url 'socialauth_begin' 'twitter' %}">Enter using Twitter</a> <BR> 
+<a href="{% url 'socialauth_begin' 'facebook' %}">Enter using Facebook</a>
+{% endblock %}
