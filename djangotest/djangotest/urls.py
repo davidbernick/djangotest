@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include, url
-from posts.views import login_index
 
 from django.contrib import admin
 admin.autodiscover()
