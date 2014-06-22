@@ -18,6 +18,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.sites import site
 from django.template import RequestContext, loader
 
+from rest_framework import status,filters,viewsets
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import permissions
+
+
+
+from .models import Task,Category
+from .serializers import TasksSerializer,UserSerializer
+from .permissions import DjangoObjectPermissionsAll
 
 # Create your views here.
 def login_index(request, template_name='base.html'): #login default page. username/password box or create new user
@@ -25,3 +36,9 @@ def login_index(request, template_name='base.html'): #login default page. userna
 
 def posts_index(request, template_name='signin.html'): #login default page. username/password box or create new user
         return render_to_response(template_name, {},context_instance=RequestContext(request))
+    
+class TaskList(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TasksSerializer
+    filter_backends = (filters.DjangoObjectPermissionsFilter,)
+    permission_classes = (permissions.DjangoObjectPermissions,)

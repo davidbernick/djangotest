@@ -58,7 +58,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'bootstrap3',
     'south',
-    'polls'
+    'posts'
     
     
 )
@@ -145,7 +145,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social_auth.context_processors.social_auth_login_redirect',
 )
 
-ANONYMOUS_USER_ID = -1
+ANONYMOUS_USER_ID = 1
 
 # Don't need to use South when setting up a test database.
 SOUTH_TESTS_MIGRATE = False
@@ -190,7 +190,7 @@ LOGGING = {
     'loggers': {
         'django.request': {
             'handlers': ['console', 'mail_admins'],
-            'level': 'ERROR',
+            'level': 'INFO',
             'propagate': True,
         },
     }
