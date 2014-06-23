@@ -17,18 +17,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class TasksSerializer(serializers.ModelSerializer):
     reported_by = UserSerializer(required=False)
-    categories = CategorySerializer()
-
-    def get_fields(self, *args, **kwargs):
-        fields = super(TasksSerializer, self).get_fields(*args, **kwargs)
-        request = self.context.get('request', None)
-        view = self.context.get('view', None)
-
-        if (request and view and getattr(view, 'object', None) and
-                request.user == view.object.user):
-            fields['categories'].read_only = True
-
-        return fields
+    categories = CategorySerializer(many=True,required=False)
+    read_only_fields = ('categories')
 
     class Meta:
         model = Task

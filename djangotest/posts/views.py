@@ -42,3 +42,6 @@ class TaskList(viewsets.ModelViewSet):
     serializer_class = TasksSerializer
     filter_backends = (filters.DjangoObjectPermissionsFilter,)
     permission_classes = (permissions.DjangoObjectPermissions,)
+    
+    def pre_save(self, obj):
+        obj.reported_by = self.request.user
